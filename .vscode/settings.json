@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "intvec.h": "c"
+        "intvec.h": "c",
+        "vectoradjacency.h": "c"
     }
 }
