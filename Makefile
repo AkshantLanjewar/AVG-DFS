@@ -19,4 +19,4 @@ intVec.o: intVec.c intVec.h
 
 # Clean rule
 clean:
-	rm -f dfs03 dfs03.o intVec.o intVecTest.o
+	rm -f dfs03 dfs03.o intVec.o intVecTest.o intVecTest

@@ -1,3 +1,8 @@
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+
 /*
 * intVec.h
 * The purpose of this header is to create a reusable integer vector for C.

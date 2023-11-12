@@ -12,11 +12,11 @@ int main()
     IntVec customVector = intMakeEmptyVecN(2);
 
     //check the default capacity is 4
-    fprintf(stdout, "Testing default vector capacity = 4");
+    fprintf(stdout, "Testing default vector capacity = 4\n");
     assert(intCapacity(defaultVector) == 4);
 
     //check the custom capacity is 2
-    fprintf(stdout, "Testing custom vector capacity = 2");
+    fprintf(stdout, "Testing custom vector capacity = 2\n");
     assert(intCapacity(customVector) == 2);
 
     //now we want to add an item to each of the vectors
@@ -27,14 +27,14 @@ int main()
     intVecPush(customVector, 4);
     intVecPush(customVector, 1);
 
-    //check the default vector = 1
+    //check the default vector = 3
     fprintf(stdout, "We want to check the top element in the default vector is 1\n");
-    assert(intTop(defaultVector) == 1);
+    assert(intTop(defaultVector) == 3);
 
     //check the top of default vector = 3 after popping one item
     intVecPop(defaultVector);
     fprintf(stdout, "We want to check that the top element is now 3\n");
-    assert(intTop(defaultVector) == 3);
+    assert(intTop(defaultVector) == 1);
 
     //check that the size of the custom vector is 3
     fprintf(stdout, "Checking the custom vector length = 3\n");
@@ -48,6 +48,6 @@ int main()
     fprintf(stdout, "Checking custom[1] = 4\n");
     assert(intData(customVector, 1) == 4);
 
-    fprintf("Tests complete, IntVec is working correctly");
+    fprintf(stdout, "Tests complete, IntVec is working correctly\n");
     return 0;
 }
