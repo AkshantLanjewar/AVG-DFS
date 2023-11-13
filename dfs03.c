@@ -74,27 +74,44 @@ int main(int argc, char *argv[])
     int numVertex = 0;
 
     while(fgets(fileLine, sizeof(fileLine), file)) {
-        char *spacePtr = strchr(fileLine, ' ');
-        if(spacePtr != NULL) {
-            //copy the first part into the left line
-            strncpy(leftLinePart, fileLine, spacePtr - fileLine);
-            leftLinePart[spacePtr - fileLine] = '\0';
+        char* token;
+        int count = 0;
 
-            //copy into the right space now
-            strcpy(rightLinePart, spacePtr + 1);
+        token = strtok(fileLine, " ");
+        bool isFirstLine = true;
+        while(token != NULL && count < 3) {
+            switch(count) {
+                case 0:
+                    strcpy(leftLinePart, token);
+                    break;
+                case 1:
+                    strcpy(rightLinePart, token);
+                    isFirstLine = false;
 
+                    break;
+                case 2:
+                    //handle weight here for DFS implementation
+                    break;
+                default:
+                    break;
+            }
+
+            //iterate the next loop
+            token = strtok(NULL, " ");
+            count++;
+        }
+
+        if(isFirstLine == true) {
+            numVertex = atoi(leftLinePart);
+            adjacencyTracker = initAdjacencyList(numVertex);
+        } else {
             //now we will parse the strings into numbers so that we can update the adjacency tracker
             int leftNumber = atoi(leftLinePart);
             int rightNumber = atoi(rightLinePart);
-
             //add the dependencies now accordingly
             addVectorAdjacency(adjacencyTracker, leftNumber, rightNumber);
             if(undirectedMode == true)
                 addVectorAdjacency(adjacencyTracker, rightNumber, leftNumber);
-        } else {
-            //no space found, root element
-            numVertex = atoi(fileLine);
-            adjacencyTracker = initAdjacencyList(numVertex);
         }
     }
 
